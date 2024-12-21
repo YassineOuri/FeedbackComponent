@@ -1,12 +1,11 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
 name: Node.js Package
 
 on:
   push:
     branches:
       - main
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -19,8 +18,23 @@ jobs:
       - run: npm ci
       # - run: npm test
 
-  publish-npm:
+  bump-version:
     needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Automatically bump the version based on the type (patch, minor, or major)
+      - run: |
+          # You can replace 'patch' with 'minor' or 'major' as needed
+          npm version patch -m "Release version %s"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+
+  publish-npm:
+    needs: bump-version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,4 +45,4 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
