@@ -35,6 +35,11 @@ jobs:
           npm version patch -m "Release version %s"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+      # Commit and push the new version
+      - run: |
+          git push origin main --follow-tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-npm:
     needs: bump-version
