@@ -4,7 +4,7 @@
       style="z-index: 1002; position: absolute; top: 10px; left: 10px"
       @click="toggleCanvas"
     >
-      Feedback
+      Submit Feedback
     </button>
   </div>
 </template>
