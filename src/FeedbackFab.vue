@@ -1,10 +1,10 @@
 <template>
   <div>
-    <button
-      style="z-index: 1002; position: absolute; top: 10px; left: 10px"
-      @click="toggleCanvas"
-    >
-      Submit Feedback
+    <button class="feedback-button" style="" @click="toggleCanvas">
+      <slot>
+        <v-icon name="oi-megaphone" />
+        {{ title }}</slot
+      >
     </button>
   </div>
 </template>
@@ -15,6 +15,10 @@ const isDrawing: Ref<boolean> = ref(false);
 const isCanvas: Ref<boolean> = ref(false);
 let canvas: HTMLCanvasElement;
 let context: CanvasRenderingContext2D;
+
+const props = defineProps<{
+  title?: string;
+}>();
 
 function toggleCanvas() {
   isCanvas.value = !isCanvas.value;
@@ -74,4 +78,18 @@ watch(isCanvas, (isCanvas) => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.feedback-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1002;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  border-radius: 50px;
+  padding: 13px 19px;
+  gap: 8px; /* Space between icon and text */
+}
+</style>

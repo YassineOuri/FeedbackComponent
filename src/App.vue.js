@@ -27,6 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const HelloWorld_vue_1 = __importDefault(require("./components/HelloWorld.vue"));
+const FeedbackFab_vue_1 = __importDefault(require("./FeedbackFab.vue"));
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await Promise.resolve().then(() => __importStar(require('vue')));
 ; /* PartiallyEnd: #3632/scriptSetup.vue */
 const __VLS_fnComponent = (await Promise.resolve().then(() => __importStar(require('vue')))).defineComponent({});
@@ -54,6 +55,11 @@ function __VLS_template() {
     // @ts-ignore
     const __VLS_0 = __VLS_asFunctionalComponent(HelloWorld_vue_1.default, new HelloWorld_vue_1.default({ msg: ("Vite + Vue"), }));
     const __VLS_1 = __VLS_0({ msg: ("Vite + Vue"), }, ...__VLS_functionalComponentArgsRest(__VLS_0));
+    // @ts-ignore
+    [FeedbackFab_vue_1.default,];
+    // @ts-ignore
+    const __VLS_5 = __VLS_asFunctionalComponent(FeedbackFab_vue_1.default, new FeedbackFab_vue_1.default({}));
+    const __VLS_6 = __VLS_5({}, ...__VLS_functionalComponentArgsRest(__VLS_5));
     __VLS_styleScopedClasses['logo'];
     __VLS_styleScopedClasses['logo'];
     __VLS_styleScopedClasses['vue'];
@@ -74,6 +80,7 @@ const __VLS_self = (await Promise.resolve().then(() => __importStar(require('vue
     setup() {
         return {
             HelloWorld: HelloWorld_vue_1.default,
+            FeedbackFab: FeedbackFab_vue_1.default,
         };
     },
 });

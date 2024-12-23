@@ -13,7 +13,7 @@ import FeedbackFab from "./FeedbackFab.vue";
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
-  <FeedbackFab />
+  <FeedbackFab title="Report a bug" />
 </template>
 
 <style scoped>
